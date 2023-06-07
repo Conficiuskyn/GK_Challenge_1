@@ -1,6 +1,6 @@
 #include "main.hpp"
 
-void run()
+void Main::run()
 {
     while(true)
     {
