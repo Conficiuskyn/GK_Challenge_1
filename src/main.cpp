@@ -1,4 +1,4 @@
-#include "main.hpp"
+#include "main.h"
 
 void Main::run()
 {
