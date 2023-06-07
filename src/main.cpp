@@ -6,6 +6,7 @@ void Main::run()
     while(true)
     {
         ESP_LOGI(TAG, "Infinite loop");
+        wifi.handle_wifi();
         vTaskDelay(pdMS_TO_TICKS(1000));
     }
 }
