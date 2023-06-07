@@ -1,7 +1,8 @@
 #include "main.h"
 
 void Main::run()
-{
+{   
+    wifi.start();
     while(true)
     {
         ESP_LOGI(TAG, "Infinite loop");
