@@ -53,6 +53,14 @@ void WifiStation::_start() {
     }
 }   
 
+void WifiStation::_connect() {
+    esp_err_t status = ESP_OK;
+    status = esp_wifi_connect();
+    if (status == ESP_OK) {
+        _state = WifiState::CONNECTING;
+    }
+}
+
 void WifiStation::wifi_event_handler(
             void *arg,
             esp_event_base_t event_base,
