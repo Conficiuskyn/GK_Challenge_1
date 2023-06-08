@@ -58,7 +58,7 @@ void WifiStation::_connect() {
     status = esp_wifi_connect();
     if (status == ESP_OK) {
         _state = WifiState::CONNECTING;
-    }
+    } 
 }
 
 void WifiStation::wifi_event_handler(
@@ -130,6 +130,36 @@ void WifiStation::handle_wifi()
 {
     switch (_state)
     {
+        case (WifiState::READY_TO_CONNECT):
+            ESP_LOGI(TAG, "READY_TO_CONNECT");
+            _connect();
+            break;
+        
+        case (WifiState::DISCONNECTED):
+            ESP_LOGI(TAG, "READY_TO_CONNECT");
+            _connect();
+            break;
+        
+        case (WifiState::READY_TO_CONNECT):
+            ESP_LOGI(TAG, "READY_TO_CONNECT");
+            _connect();
+            break;
+        
+        case (WifiState::DISCONNECTED):
+            ESP_LOGI(TAG, "READY_TO_CONNECT");
+            _connect();
+            break;
+        
+        case (WifiState::READY_TO_CONNECT):
+            ESP_LOGI(TAG, "READY_TO_CONNECT");
+            _connect();
+            break;
+        
+        case (WifiState::DISCONNECTED):
+            ESP_LOGI(TAG, "READY_TO_CONNECT");
+            _connect();
+            break;
+        
         case (WifiState::READY_TO_CONNECT):
             ESP_LOGI(TAG, "READY_TO_CONNECT");
             _connect();
