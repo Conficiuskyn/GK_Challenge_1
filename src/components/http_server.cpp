@@ -1,5 +1,6 @@
 #include "http_server.h"
 
+//start the webserver and register the post and get requests
 void HttpServer::start()
 {
     httpd_config_t cfg = HTTPD_DEFAULT_CONFIG();
@@ -14,6 +15,7 @@ void HttpServer::start()
     }
 }
 
+//stop the server
 void HttpServer::stop()
 {
     httpd_stop(&_server);
@@ -21,12 +23,16 @@ void HttpServer::stop()
     ESP_LOGI(TAG, "Stopped");
 }
 
+//get the running state of the server
 bool HttpServer::isRunning() {
     return _running;
 }
 
+//Register the post (write string) and get (read string) methods into the webserver
 void HttpServer::_registerRequests()
-{
+{   
+
+    //POST method : _writeStringToEEPROM
     httpd_uri_t postHandler;
     postHandler.uri = "/";
     postHandler.method = HTTP_POST;
@@ -39,6 +45,7 @@ void HttpServer::_registerRequests()
         ESP_LOGI(TAG, "Post request FAILED : _writeStringToEEPROM");
     } 
 
+    //GET method : _readStringFromEEPROM
     httpd_uri_t getHandler;
     getHandler.uri = "/";
     getHandler.method = HTTP_GET;
@@ -52,6 +59,7 @@ void HttpServer::_registerRequests()
     }
 }
 
+//Implementation of writing a string into the EEPROM of esp32 using nvs and a key
 esp_err_t HttpServer::_writeStringToEEPROM(httpd_req_t *req) 
 {   
     char content[200];
@@ -76,6 +84,7 @@ esp_err_t HttpServer::_writeStringToEEPROM(httpd_req_t *req)
     return ESP_OK;
 }
 
+//Implementation of reading a string into the EEPROM of esp32 using nvs and a key
 esp_err_t HttpServer::_readStringFromEEPROM(httpd_req_t *req) 
 {  
     nvs_handle_t nvs_handler;
