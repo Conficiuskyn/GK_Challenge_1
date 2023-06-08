@@ -122,10 +122,6 @@ void WifiStation::ip_event_handler(
         }    
     }
 
-void WifiStation::_connect() {
-    ESP_LOGI(TAG, "connecting......");
-}
-
 void WifiStation::handle_wifi() 
 {
     switch (_state)
