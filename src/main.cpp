@@ -1,7 +1,11 @@
 #include "main.h"
 
+#define SSID "roro"
+#define PASSWORD "123456789"
+
 void Main::run()
 {   
+    wifi.setSSIDandPASSWORD(SSID, PASSWORD);
     wifi.start();
     while(true)
     {
