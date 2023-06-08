@@ -23,7 +23,7 @@ class WifiStation
         void setSSIDandPASSWORD(const char* ssid, const char* password);
         void start();
         void handle_wifi();
-        constexpr static const wifi_state &get_state(void) { return _state;};
+        constexpr static const WifiState &get_state(void) { return _state;};
     
     private:
 

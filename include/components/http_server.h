@@ -4,7 +4,7 @@
 class HttpServer 
 {
     public:
-        isRunning();
+        bool isRunning();
         void start();
         void stop();
         static constexpr const char* TAG = "[http_server]";
