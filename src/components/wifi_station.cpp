@@ -140,33 +140,33 @@ void WifiStation::handle_wifi()
             _connect();
             break;
         
-        case (WifiState::READY_TO_CONNECT):
-            ESP_LOGI(TAG, "READY_TO_CONNECT");
+        case (WifiState::NOT_INITIALIZED):
+            ESP_LOGI(TAG, "NOT_INITIALIZED");
             _connect();
             break;
         
-        case (WifiState::DISCONNECTED):
-            ESP_LOGI(TAG, "READY_TO_CONNECT");
+        case (WifiState::INITIALIZED):
+            ESP_LOGI(TAG, "INITIALIZED");
             _connect();
             break;
         
-        case (WifiState::READY_TO_CONNECT):
-            ESP_LOGI(TAG, "READY_TO_CONNECT");
+        case (WifiState::CONNECTING):
+            ESP_LOGI(TAG, "CONNECTING");
             _connect();
             break;
         
-        case (WifiState::DISCONNECTED):
-            ESP_LOGI(TAG, "READY_TO_CONNECT");
+        case (WifiState::WAITING_FOR_IP):
+            ESP_LOGI(TAG, "WAITING_FOR_IP");
             _connect();
             break;
         
-        case (WifiState::READY_TO_CONNECT):
-            ESP_LOGI(TAG, "READY_TO_CONNECT");
+        case (WifiState::CONNECTED):
+            ESP_LOGI(TAG, "CONNECTED");
             _connect();
             break;
         
-        case (WifiState::DISCONNECTED):
-            ESP_LOGI(TAG, "READY_TO_CONNECT");
+        case (WifiState::ERROR):
+            ESP_LOGI(TAG, "ERROR");
             _connect();
             break;
         
