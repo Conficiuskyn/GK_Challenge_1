@@ -4,6 +4,7 @@ void HttpServer::start()
 {
     httpd_config_t cfg = HTTPD_DEFAULT_CONFIG();
     if (httpd_start(&_server, &cfg) == ESP_OK) {
+        _registerRequests();
         _running = true;
         ESP_LOGI(TAG, "Started");
     }
@@ -22,6 +23,33 @@ void HttpServer::stop()
 
 bool HttpServer::isRunning() {
     return _running;
+}
+
+void HttpServer::_registerRequests()
+{
+    httpd_uri_t postHandler;
+    postHandler.uri = "/";
+    postHandler.method = HTTP_POST;
+    postHandler.handler = _writeStringToEEPROM;
+    postHandler.user_ctx = NULL;
+    if (httpd_register_uri_handler(_server, &postHandler) == ESP_OK) {
+        ESP_LOGI(TAG, "Post request registered : _writeStringToEEPROM");
+    }
+    else {
+        ESP_LOGI(TAG, "Post request FAILED : _writeStringToEEPROM");
+    } 
+
+    httpd_uri_t getHandler;
+    getHandler.uri = "/";
+    getHandler.method = HTTP_GET;
+    getHandler.handler = _readStringFromEEPROM;
+    getHandler.user_ctx = NULL;
+    if (httpd_register_uri_handler(_server, &getHandler) == ESP_OK) {
+        ESP_LOGI(TAG, "Get request registered : _readStringFromEEPROM");
+    }
+    else {
+        ESP_LOGI(TAG, "Get request FAILED : _readStringFromEEPROM");
+    }
 }
 
 esp_err_t HttpServer::_writeStringToEEPROM(httpd_req_t *req) 
