@@ -12,4 +12,6 @@ class HttpServer
     private:
         bool _running{false};
         httpd_handle_t _server;
+        static esp_err_t _writeStringToEEPROM(httpd_req_t *req);
+        static esp_err_t _readStringFromEEPROM(httpd_req_t *req);
 };

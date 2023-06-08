@@ -23,3 +23,12 @@ void HttpServer::stop()
 bool HttpServer::isRunning() {
     return _running;
 }
+
+esp_err_t HttpServer::_writeStringToEEPROM(httpd_req_t *req) 
+{
+
+}
+
+esp_err_t HttpServer::_readStringFromEEPROM(httpd_req_t *req) 
+{  
+}
