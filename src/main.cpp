@@ -11,6 +11,10 @@ void Main::run()
     {
         ESP_LOGI(TAG, "Infinite loop");
         wifi.handle_wifi();
+        if (wifi.get_state() == WifiStation::WifiState::CONNECTED 
+            && !webserver.isRunning()) {
+                webserver.start();
+        }
         vTaskDelay(pdMS_TO_TICKS(1000));
     }
 }
